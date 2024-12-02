@@ -32,6 +32,8 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+
   <!-- =======================================================
   * Template Name: Gp
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -146,14 +148,16 @@
           <div class="col-lg-6 order-2 order-lg-1 content">
             <h3>Welcome to Taxcom – Your Trusted Partner in Financial Excellence</h3>
             <p class="fst-italic">
-              At Taxcom, we specialize in delivering tailored solutions for all your financial and taxation needs. From Business Accounts and Taxation to Self Assessment, Bookkeeping, VAT, and Payroll, we ensure every aspect of your finances is handled with precision and care.
+              At Taxcom, we understand that managing finances can be overwhelming, but it doesn’t have to be. We specialize in providing comprehensive, reliable, and efficient solutions for all your financial and taxation needs. Whether it’s Business Accounts and Taxation, Self Assessment, Bookkeeping, VAT, or Payroll, we’re here to simplify the complexities and ensure your records are in top shape.
+
+Our dedicated team works closely with you to understand your unique requirements, offering tailored advice and services to support your personal or business growth. With Taxcom, you’ll always have a partner you can trust, ensuring that your financial goals are met with expertise and care.
             </p>
-            <ul>
+            <!--ul>
               <li><i class="bi bi-check2-all"></i> <span>Transparent Pricing: Enjoy fixed fees with no surprises.</span></li>
               <li><i class="bi bi-check2-all"></i> <span>Personalized Support: We’re local, friendly, and committed to understanding your unique needs.</span></li>
               <li><i class="bi bi-check2-all"></i> <span>Convenience: Whether you prefer meetings at your home or business premises, we make it easy to connect and collaborate.</span></li>
-            </ul>
-            <p>
+            </ul-->
+            <p class="fst-italic">
               Let Taxcom handle the numbers while you focus on what matters most – growing your business.
             </p>
           </div>
@@ -164,7 +168,7 @@
     </section><!-- /About Section -->
 
     <!-- Clients Section -->
-    <section id="clients" class="clients section">
+    <!--section id="clients" class="clients section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -217,55 +221,61 @@
 
       </div>
 
-    </section><!-- /Clients Section -->
+    </section--><!-- /Clients Section -->
 
-    <!-- Features Section -->
     <section id="features" class="features section">
 
       <div class="container">
-
+    
         <div class="row gy-4">
-          <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100"><img src="assets/img/features-bg.jpg" alt=""></div>
+          <!-- Image Section -->
+          <div class="features-image col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/feature main pic.jpg" alt="">
+          </div>
+    
+          <!-- Features Section -->
           <div class="col-lg-6">
-
-            <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-archive flex-shrink-0"></i>
+    
+            <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-right" data-aos-delay="200">
+              <i class="bi bi-cash-stack flex-shrink-0"></i>
               <div>
-                <h4>Est labore ad</h4>
-                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                <h4>Transparent Pricing</h4>
+                <p>Enjoy fixed fees with no hidden costs.</p>
               </div>
             </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-basket flex-shrink-0"></i>
+    
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-right" data-aos-delay="300">
+              <i class="bi bi-people flex-shrink-0"></i>
               <div>
-                <h4>Harum esse qui</h4>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                <h4>Personalized Support</h4>
+                <p>We’re local, friendly, and dedicated to providing a personal touch.</p>
               </div>
             </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-broadcast flex-shrink-0"></i>
+    
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-right" data-aos-delay="400">
+              <i class="bi bi-house-door flex-shrink-0"></i>
               <div>
-                <h4>Aut occaecati</h4>
-                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                <h4>Unmatched Convenience</h4>
+                <p>Schedule meetings at your home or business premises for maximum ease.</p>
               </div>
             </div><!-- End Features Item-->
-
-            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-up" data-aos-delay="500">
-              <i class="bi bi-camera-reels flex-shrink-0"></i>
+    
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-right" data-aos-delay="500">
+              <i class="bi bi-journal-bookmark flex-shrink-0"></i>
               <div>
-                <h4>Beatae veritatis</h4>
-                <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                <h4>Expert Guidance</h4>
+                <p>Benefit from our in-depth knowledge of the latest tax regulations and financial practices to ensure compliance and optimize your finances.</p>
               </div>
             </div><!-- End Features Item-->
-
+    
           </div>
         </div>
-
+    
       </div>
-
+    
     </section><!-- /Features Section -->
+    
+    
 
     <!-- Services Section -->
     <section id="services" class="services section">
@@ -940,6 +950,13 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+
+  
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
