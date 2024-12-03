@@ -1237,6 +1237,9 @@ section,
 .stats .stats-item {
   padding: 10px;
 }
+#stats {
+  padding-top: 40px; /* Reduced the top padding to tighten the gap with "Our Satisfied Clients" */
+}
 
 .stats .stats-item i {
   font-size: 44px;
@@ -1259,6 +1262,12 @@ section,
   margin: 0;
   font-family: var(--heading-font);
   font-size: 14px;
+}
+#stats h3 {
+  margin-top: 0; /* Removed unnecessary space above "Our Achievements" */
+}
+#reviews .section-title {
+  margin-bottom: 20px; /* Reduced the gap below "Our Satisfied Clients" */
 }
 
 /*--------------------------------------------------------------
@@ -1383,14 +1392,14 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Team Section
---------------------------------------------------------------*/
+/* Team Section */
 .team .team-member {
   background-color: var(--surface-color);
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   height: 100%;
+  text-align: center; /* Center align */
 }
 
 .team .team-member .member-img {
@@ -1451,6 +1460,25 @@ section,
 .team .team-member:hover .social {
   opacity: 1;
   bottom: 15px;
+}
+
+/* AOS Animations */
+[data-aos="fade-left"] {
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(50px);
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+}
+
+[data-aos="fade-left"].aos-animate,
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 /*--------------------------------------------------------------
