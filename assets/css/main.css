@@ -458,7 +458,7 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Global Footer
+/* Global Footer
 --------------------------------------------------------------*/
 .footer {
   color: var(--default-color);
@@ -523,6 +523,7 @@ h6 {
 
 .footer .footer-links {
   margin-bottom: 30px;
+  text-align: center; /* Centers the content of the links */
 }
 
 .footer .footer-links ul {
@@ -542,6 +543,7 @@ h6 {
   padding: 10px 0;
   display: flex;
   align-items: center;
+  justify-content: center; /* Aligns the items in the center */
 }
 
 .footer .footer-links ul li:first-child {
