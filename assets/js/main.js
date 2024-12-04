@@ -210,3 +210,86 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+// JavaScript to Handle Review Submissions
+document.getElementById('reviewForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent the form from refreshing the page
+
+  // Get form inputs
+  const name = document.getElementById('name').value;
+  const review = document.getElementById('review').value;
+  const rating = document.getElementById('rating').value;
+
+  // Create review card
+  const reviewCard = document.createElement('div');
+  reviewCard.classList.add('col-lg-4', 'review-card');
+  reviewCard.setAttribute('data-aos', 'fade-up');
+  reviewCard.innerHTML = `
+    <div class="testimonial-item">
+      <h4>${name}</h4>
+      <div class="stars">
+        ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}
+      </div>
+      <p>${review}</p>
+    </div>
+  `;
+
+  // Add to reviews list
+  const reviewsList = document.getElementById('reviewsList');
+  reviewsList.appendChild(reviewCard);
+
+  // Clear the form
+  document.getElementById('reviewForm').reset();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const reviewsList = document.getElementById('reviewsList');
+
+  // Fetch Reviews from Backend on Page Load
+  fetch('http://localhost:3000/reviews')
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((review) => {
+        addReviewToPage(review);
+      });
+    });
+
+  // Handle Form Submission
+  document.getElementById('reviewForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const review = document.getElementById('review').value;
+    const rating = document.getElementById('rating').value;
+
+    const newReview = { name, review, rating };
+
+    // Send the Review to Backend
+    fetch('http://localhost:3000/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newReview),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        addReviewToPage(newReview);
+        document.getElementById('reviewForm').reset();
+      });
+  });
+
+  // Function to Add Review to the Page
+  function addReviewToPage(review) {
+    const reviewCard = document.createElement('div');
+    reviewCard.classList.add('col-lg-4', 'review-card');
+    reviewCard.setAttribute('data-aos', 'fade-up');
+    reviewCard.innerHTML = `
+      <div class="testimonial-item">
+        <h4>${review.name}</h4>
+        <div class="stars">
+          ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+        </div>
+        <p>${review.review}</p>
+      </div>
+    `;
+    reviewsList.appendChild(reviewCard);
+  }
+});
+

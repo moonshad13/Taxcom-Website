@@ -309,23 +309,16 @@ Our dedicated team works closely with you to understand your unique requirements
 
 <section id="services" class="services section">
 
-  <!-- Reviews-->
-  <section id="reviews" class="reviews section">
+  <!-- Reviews Section -->
+<section id="reviews" class="reviews section">
   <div class="container section-title" data-aos="fade-up">
     <h2>Reviews</h2>
     <p>OUR SATISFIED CLIENTS</p>
   </div>
-    
-
-  
-
 <!-- Stats Section -->
 <section id="stats" class="stats section">
-
   <div class="container" data-aos="fade-up" data-aos-delay="100">
-
     <div class="row gy-4 align-items-center justify-content-between">
-
       <!-- Image Section -->
       <div class="col-lg-5" data-aos="fade-right" data-aos-duration="800">
         <img src="assets/img/reviews.jpg" alt="Stats Image" class="img-fluid">
@@ -333,14 +326,12 @@ Our dedicated team works closely with you to understand your unique requirements
 
       <!-- Stats Section -->
       <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
-
         <h3 class="fw-bold fs-2 mb-3">Our Achievements</h3>
         <p>
           We are proud of the milestones we've achieved, delivering quality service and support to our valued clients.
         </p>
 
         <div class="row gy-4">
-
           <div class="col-lg-6">
             <div class="stats-item d-flex">
               <i class="bi bi-emoji-smile flex-shrink-0"></i>
@@ -349,7 +340,7 @@ Our dedicated team works closely with you to understand your unique requirements
                 <p><strong>Happy Clients</strong></p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
           <div class="col-lg-6">
             <div class="stats-item d-flex">
@@ -359,7 +350,7 @@ Our dedicated team works closely with you to understand your unique requirements
                 <p><strong>Projects Completed</strong></p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
+          </div>
 
           <div class="col-lg-6">
             <div class="stats-item d-flex">
@@ -369,21 +360,72 @@ Our dedicated team works closely with you to understand your unique requirements
                 <p><strong>Hours of Support</strong></p>
               </div>
             </div>
-          </div><!-- End Stats Item -->
-
+          </div>
         </div>
-
       </div>
-
     </div>
+  </div>
+</section>
+<!-- End Stats Section -->
 
+<!-- Client Reviews Section -->
+<section id="reviews" class="reviews section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Reviews</h2>
+    <p>What Our Clients Say</p>
   </div>
 
-</section><!-- End Stats Section -->
+  <!-- Display Reviews -->
+  <div id="reviews-container" class="container" data-aos="fade-up" data-aos-delay="200">
+    <div class="row gy-4" id="reviewsList">
+      <!-- Reviews will be dynamically added here -->
+    </div>
+  </div>
+</section>
+<!-- End Client Reviews Section -->
+
+<!-- Leave a Review Section -->
+<section id="leave-review" class="reviews section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <h3 class="fw-bold fs-2 mb-3">Leave a Review</h3>
+    <form id="reviewForm" class="review-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="Your Name" required class="form-control">
+      </div>
+
+      <!-- Review Field -->
+      <div class="form-group">
+        <label for="review">Write Your Review:</label>
+        <textarea id="review" placeholder="Write your review" required class="form-control"></textarea>
+      </div>
+
+      <!-- Rating Field -->
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <select id="rating" required class="form-control">
+          <option value="5">★★★★★</option>
+          <option value="4">★★★★☆</option>
+          <option value="3">★★★☆☆</option>
+          <option value="2">★★☆☆☆</option>
+          <option value="1">★☆☆☆☆</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+  </div>
+</section>
+<!-- End Leave a Review Section -->
+
+
+ 
 
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section dark-background">
+    <!--section id="testimonials" class="testimonials section dark-background">
 
       <img src="assets/img/000000.png" class="testimonials-bg" alt="">
 
@@ -423,7 +465,7 @@ Our dedicated team works closely with you to understand your unique requirements
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!--div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
@@ -439,7 +481,7 @@ Our dedicated team works closely with you to understand your unique requirements
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!--div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                 <h3>Jena Karlis</h3>
@@ -455,7 +497,7 @@ Our dedicated team works closely with you to understand your unique requirements
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!--div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                 <h3>Matt Brandon</h3>
@@ -471,7 +513,7 @@ Our dedicated team works closely with you to understand your unique requirements
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!--div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                 <h3>John Larson</h3>
@@ -487,7 +529,7 @@ Our dedicated team works closely with you to understand your unique requirements
               </div>
             </div><!-- End testimonial item -->
 
-          </div>
+          <!--/div>
           <div class="swiper-pagination"></div>
         </div>
 
