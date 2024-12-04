@@ -292,4 +292,44 @@ document.addEventListener('DOMContentLoaded', () => {
     reviewsList.appendChild(reviewCard);
   }
 });
+const fetchReviews = () => {
+  fetch('http://127.0.0.1:8000/api/reviews/')
+      .then(response => response.json())
+      .then(reviews => {
+          const reviewsContainer = document.getElementById('reviewsContainer');
+          reviewsContainer.innerHTML = ''; // Clear existing reviews
+          reviews.forEach(review => {
+              const reviewElement = document.createElement('div');
+              reviewElement.className = 'review';
+              reviewElement.innerHTML = `
+                  <h3>${review.name}</h3>
+                  <p>${review.review_text}</p>
+                  <p>Rating: ${review.rating} stars</p>
+              `;
+              reviewsContainer.appendChild(reviewElement);
+          });
+      });
+};
+
+fetchReviews();
+const submitReview = () => {
+  const name = document.getElementById('name').value;
+  const rating = document.getElementById('rating').value;
+  const reviewText = document.getElementById('reviewText').value;
+
+  fetch('http://127.0.0.1:8000/api/add-review/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, rating, review_text: reviewText }),
+  })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          fetchReviews(); // Refresh reviews
+      })
+      .catch(error => console.error('Error adding review:', error));
+};
+
+document.getElementById('submitReview').addEventListener('click', submitReview);
+
 
