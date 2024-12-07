@@ -241,74 +241,7 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   document.getElementById('reviewForm').reset();
 });
 
-// Function to display reviews dynamically in the reviews section
-const setReviews = (reviews) => {
-  const reviewsList = document.getElementById('reviewsList');
-  reviewsList.innerHTML = ''; // Clear existing reviews
 
-  if (reviews.length === 0) {
-    reviewsList.innerHTML = '<p class="text-muted">No reviews yet. Be the first to leave one!</p>';
-    return;
-  }
-
-  reviews.forEach((review) => {
-    const reviewElement = document.createElement('div');
-    reviewElement.classList.add('col-lg-4', 'col-md-6');
-
-    reviewElement.innerHTML = `
-      <div class="review-item p-3 border rounded">
-        <h5 class="fw-bold">${review.author}</h5>
-        <p>${review.content}</p>
-        <small class="text-muted">${new Date(review.createdAt).toLocaleDateString()}</small>
-      </div>
-    `;
-
-    reviewsList.appendChild(reviewElement);
-  });
-};
-
-// Fetch reviews from the backend and display them
-const fetchReviews = async () => {
-  try {
-    const response = await fetch('http://localhost:5000/api/reviews');
-    const data = await response.json();
-    console.log(data); // Debug: Check if data is being fetched correctly
-    setReviews(data);  // Update the UI with the fetched reviews
-  } catch (error) {
-    console.error('Error fetching reviews:', error);
-  }
-};
-
-// Submit a new review to the backend
-const submitReview = async (author, content) => {
-  try {
-    await fetch('http://localhost:5000/api/reviews', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, content }),
-    });
-    fetchReviews(); // Refresh the reviews after submission
-  } catch (error) {
-    console.error('Error submitting review:', error);
-  }
-};
-
-// Handle the form submission
-document.getElementById('reviewForm').addEventListener('submit', (event) => {
-  event.preventDefault(); // Prevent the form from reloading the page
-
-  const author = document.getElementById('name').value;
-  const content = document.getElementById('review').value;
-
-  // Clear the form fields after submission
-  document.getElementById('name').value = '';
-  document.getElementById('review').value = '';
-
-  submitReview(author, content);
-});
-
-// Fetch reviews when the page loads
-fetchReviews();
 
 
 
