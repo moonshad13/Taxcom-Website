@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/taxcom_reviews', {
+mongoose.connect('mongodb://localhost:27017/taxcom', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB is connected'))
