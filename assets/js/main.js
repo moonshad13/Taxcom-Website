@@ -241,6 +241,33 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   document.getElementById('reviewForm').reset();
 });
 
+const fetchReviews = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/reviews');
+    const data = await response.json();
+    console.log(data); // Debug: Check if data is being fetched correctly
+    setReviews(data);  // Assuming you have a function to set the reviews in the UI
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+  }
+};
+
+const submitReview = async (author, content) => {
+  try {
+    await fetch('http://localhost:5000/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ author, content }),
+    });
+    fetchReviews(); // Refresh reviews after submission
+  } catch (error) {
+    console.error('Error submitting review:', error);
+  }
+};
+
+// Call fetchReviews when the page loads
+fetchReviews();
+
 
 
 
