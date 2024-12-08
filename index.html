@@ -648,6 +648,7 @@ Our dedicated team works closely with you to understand your unique requirements
               </div>
             </form>
           </div><!-- End Contact Form -->
+          
 
         </div>
 
@@ -730,6 +731,42 @@ Our dedicated team works closely with you to understand your unique requirements
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs"></script>
 
+  <script>
+    document.querySelector('.php-email-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+  
+      const form = e.target;
+      const formData = new FormData(form);
+      const loading = document.querySelector('.loading');
+      const errorMessage = document.querySelector('.error-message');
+      const sentMessage = document.querySelector('.sent-message');
+  
+      loading.style.display = 'block';
+      errorMessage.textContent = '';
+      sentMessage.textContent = '';
+  
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+  
+        const result = await response.text();
+        loading.style.display = 'none';
+  
+        if (response.ok) {
+          sentMessage.textContent = result;
+          form.reset();
+        } else {
+          errorMessage.textContent = result;
+        }
+      } catch (error) {
+        loading.style.display = 'none';
+        errorMessage.textContent = 'An error occurred. Please try again.';
+      }
+    });
+  </script>
+  
   
 
 

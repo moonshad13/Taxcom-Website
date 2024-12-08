@@ -1,41 +1,53 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'moonshadshahid07@gmail.com';
+// If the form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+    // Sanitize the user inputs
+    $name    = htmlspecialchars($_POST['name']);
+    $email   = htmlspecialchars($_POST['email']);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
+    $to      = 'moonshadshahid07@gmail.com';  // Your receiving email address
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+    // Include Composer autoload (this will load PHPMailer)
+    require '../vendor/autoload.php';  // Adjust path if necessary
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    // Create a new PHPMailer instance
+    $mail = new PHPMailer;
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+    // SMTP configuration
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';  // Use Gmail SMTP
+    $mail->SMTPAuth = true;
+    $mail->Username = 'your-email@gmail.com';  // Your Gmail address
+    $mail->Password = 'your-app-password';  // Use app-specific password (if 2FA is enabled)
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
 
-  echo $contact->send();
+    // Email settings
+    $mail->setFrom($email, $name);
+    $mail->addAddress($to);  // Send email to the receiving address
+    $mail->Subject = $subject;
+    $mail->Body    = "You have received a new message from your website contact form:\n\n";
+    $mail->Body   .= "Name: $name\n";
+    $mail->Body   .= "Email: $email\n";
+    $mail->Body   .= "Subject: $subject\n\n";
+    $mail->Body   .= "Message:\n$message\n";
+
+    // Attempt to send the email
+    if ($mail->send()) {
+        echo "Your message has been sent successfully. Thank you!";
+    } else {
+        echo "Sorry, your message could not be sent. Please try again later. Error: " . $mail->ErrorInfo;
+    }
+
+} else {
+    echo "Invalid request method.";
+}
 ?>
+
+
+
