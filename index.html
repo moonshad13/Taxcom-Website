@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -8,15 +10,20 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
+  <!-- Firebase SDKs -->
+ 
+
   <!-- Favicons -->
   <link href="assets/img/Taxnom.svg" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
 
   <!-- Fonts -->
   <link
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
   rel="stylesheet"
 />
+
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -34,18 +41,14 @@
 
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
   
+  
 
-
-  <!-- =======================================================
-  * Template Name: Gp
-  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
-  * Updated: Aug 15 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    
+  
 </head>
 
 <body class="index-page">
+
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -65,23 +68,7 @@
           <li><a href="#reviews">Reviews</a></li>
           
           <li><a href="#team">Team</a></li>
-          <!--li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li-->
+
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -367,8 +354,7 @@ Our dedicated team works closely with you to understand your unique requirements
   </div>
 </section>
 <!-- End Stats Section -->
-
-<!-- Client Reviews Section -->
+ <!-- Client Reviews Section -->
 <section id="reviews" class="reviews section">
   <div class="container section-title" data-aos="fade-up">
     <h2>Reviews</h2>
@@ -378,7 +364,7 @@ Our dedicated team works closely with you to understand your unique requirements
   <!-- Display Reviews -->
   <div id="reviews-container" class="container" data-aos="fade-up" data-aos-delay="200">
     <div class="row gy-4" id="reviewsList">
-      <!-- Reviews will be dynamically added here -->
+      <!-- Dynamically loaded reviews will appear here -->
     </div>
   </div>
 </section>
@@ -390,140 +376,53 @@ Our dedicated team works closely with you to understand your unique requirements
     <h3 class="fw-bold fs-2 mb-3">Leave a Review</h3>
     <form id="reviewForm" class="review-form">
       <!-- Name Field -->
-      <div class="form-group">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" placeholder="Your Name" required class="form-control">
+      <div class="form-group mb-3">
+        <label for="name" class="form-label">Your Name:</label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          placeholder="Your Name" 
+          required 
+          class="form-control" 
+          aria-label="Your Name">
       </div>
 
       <!-- Review Field -->
-      <div class="form-group">
-        <label for="review">Write Your Review:</label>
-        <textarea id="review" placeholder="Write your review" required class="form-control"></textarea>
+      <div class="form-group mb-3">
+        <label for="review" class="form-label">Write Your Review:</label>
+        <textarea 
+          id="review" 
+          name="review" 
+          placeholder="Write your review" 
+          required 
+          class="form-control" 
+          rows="4" 
+          aria-label="Write Your Review"></textarea>
+      </div>
+
+      <!-- Rating Field -->
+      <div class="form-group mb-3">
+        <label for="rating" class="form-label">Rating (1-5):</label>
+        <input 
+          type="number" 
+          id="rating" 
+          name="rating" 
+          min="1" 
+          max="5" 
+          placeholder="Rating" 
+          class="form-control" 
+          aria-label="Rating (1-5)">
       </div>
 
       <!-- Submit Button -->
-      <button type="submit" id="submitBtn" class="btn btn-primary">Submit Review</button>
+      <button type="submit" id="submitBtn" class="btn btn-primary w-100">
+        Submit Review
+      </button>
     </form>
   </div>
 </section>
-<!-- End Leave a Review Section -->
-
-
- 
-
-
-    <!-- Testimonials Section -->
-    <!--section id="testimonials" class="testimonials section dark-background">
-
-      <img src="assets/img/000000.png" class="testimonials-bg" alt="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <!--div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          <!--/div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
+<!-- End Leave a Review Section --
 
    <!-- Team Section -->
 <section id="team" class="team section">
@@ -689,15 +588,7 @@ Our dedicated team works closely with you to understand your unique requirements
       </div>
     </div>
   
-    <!--div class="copyright">
-      <div class="container text-center">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">GP</strong> <span>All Rights Reserved</span></p>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          <!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a-->
+ =
         </div>
       </div>
     </div>
@@ -729,9 +620,26 @@ Our dedicated team works closely with you to understand your unique requirements
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
   
-
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyDX8kAVpirHLuKtyaMDV3dvUhK4MrI7veA",
+    authDomain: "taxcom-c8aeb.firebaseapp.com",
+    projectId: "taxcom-c8aeb",
+    storageBucket: "taxcom-c8aeb.firebasestorage.app",
+    messagingSenderId: "149614915101",
+    appId: "1:149614915101:web:a273b1c65f9202a979e0f4",
+    measurementId: "G-DFBKZNV39C"
+};
+  
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

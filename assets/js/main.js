@@ -6,9 +6,71 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
 (function() {
   "use strict";
+  const firebaseConfig = {
+    apiKey: "AIzaSyDX8kAVpirHLuKtyaMDV3dvUhK4MrI7veA",
+    authDomain: "taxcom-c8aeb.firebaseapp.com",
+    projectId: "taxcom-c8aeb",
+    storageBucket: "taxcom-c8aeb.firebasestorage.app",
+    messagingSenderId: "149614915101",
+    appId: "1:149614915101:web:a273b1c65f9202a979e0f4",
+    measurementId: "G-DFBKZNV39C"
+};
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
+function addReview(name, review, rating) {
+  return db.collection("reviews").add({
+    name: name,
+    review: review,
+    rating: parseInt(rating),
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  });
+}
+
+function displayReviews() {
+  const reviewsList = document.getElementById("reviewsList");
+  if (!reviewsList) return;
+
+  reviewsList.innerHTML = "";
+  db.collection("reviews").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const review = doc.data();
+      const reviewElement = document.createElement("div");
+      reviewElement.className = "col-lg-4 review-card";
+      reviewElement.setAttribute('data-aos', 'fade-up');
+      reviewElement.innerHTML = `
+        <div class="testimonial-item">
+          <h4>${review.name}</h4>
+          <div class="stars">
+            ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+          </div>
+          <p>${review.review}</p>
+        </div>
+      `;
+      reviewsList.appendChild(reviewElement);
+    });
+  });
+}
+
+// Event listener for form submission
+document.getElementById("reviewForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const review = document.getElementById("review").value;
+  const rating = document.getElementById("rating").value;
+
+  addReview(name, review, rating).then(() => {
+    document.getElementById("reviewForm").reset();
+    displayReviews();
+  });
+});
+
+// Display reviews on page load
+window.addEventListener('load', displayReviews);
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */

@@ -267,3 +267,354 @@
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Add Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Taxcom Accounting Services</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/Taxnom.svg" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <!-- Fonts -->
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  rel="stylesheet"
+/>
+
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+  
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyDX8kAVpirHLuKtyaMDV3dvUhK4MrI7veA",
+    authDomain: "taxcom-c8aeb.firebaseapp.com",
+    projectId: "taxcom-c8aeb",
+    storageBucket: "taxcom-c8aeb.firebasestorage.app",
+    messagingSenderId: "149614915101",
+    appId: "1:149614915101:web:a273b1c65f9202a979e0f4",
+    measurementId: "G-DFBKZNV39C"
+};
+  
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+  <!-- =======================================================
+  * Template Name: Gp
+  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+  * Updated: Aug 15 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+  <script type="module" src="firebase-config.js"></script> <!-- Include Firebase configuration -->
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Taxcom</h1>
+        <span>.</span>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home<br></a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          
+          <li><a href="#team">Team</a></li>
+          <!--li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li-->
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <img src="assets/img/heronewbg.jpg" alt="" data-aos="fade-in">
+
+      <div class="container">
+
+        <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-xl-6 col-lg-8">
+            <h2>Welcome to Taxcom – Your Trusted Accounting Partner<span>!</span></h2>
+            
+          </div>
+        </div>
+
+        <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
+          <!-- VAT Icon -->
+          <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box">
+              <i class="fas fa-file-invoice-dollar"></i>
+              <h3><a href="">Self Assessment<br>Tax Return<br> </a></h3>
+            </div>
+          </div>
+          
+          <!-- Tax Icon -->
+          <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <i class="fas fa-balance-scale"></i>
+              <h3><a href="">Business Accounts and Taxation </a></h3>
+            </div>
+          </div>
+          
+          <!-- Accounting Icon -->
+          <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon-box">
+              <i class="fas fa-calculator"></i>
+              <h3><a href="">Bookkeeping, VAT and Payroll</a></h3>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 order-1 order-lg-2">
+            <img src="assets/img/about picture.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 order-2 order-lg-1 content">
+            <h3>Welcome to Taxcom – Your Trusted Partner in Financial Excellence</h3>
+            <p>
+              At Taxcom, we understand that managing finances can be overwhelming, but it doesn’t have to be. We specialize in providing comprehensive, reliable, and efficient solutions for all your financial and taxation needs. Whether it’s Business Accounts and Taxation, Self Assessment, Bookkeeping, VAT, or Payroll, we’re here to simplify the complexities and ensure your records are in top shape.
+
+Our dedicated team works closely with you to understand your unique requirements, offering tailored advice and services to support your personal or business growth. With Taxcom, you’ll always have a partner you can trust, ensuring that your financial goals are met with expertise and care.
+            </p>
+           
+            <p>
+              Let Taxcom handle the numbers while you focus on what matters most – growing your business.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+
+
+    <section id="features" class="features section">
+
+      <div class="container">
+    
+        <div class="row gy-4">
+          <!-- Image Section -->
+          <div class="features-image col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/feature main pic.jpg" alt="">
+          </div>
+    
+          <!-- Features Section -->
+          <div class="col-lg-6">
+    
+            <div class="features-item d-flex ps-0 ps-lg-3 pt-4 pt-lg-0" data-aos="fade-right" data-aos-delay="200">
+              <i class="bi bi-cash-stack flex-shrink-0"></i>
+              <div>
+                <h4>Transparent Pricing</h4>
+                <p>Enjoy fixed fees with no hidden costs.</p>
+              </div>
+            </div><!-- End Features Item-->
+    
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-right" data-aos-delay="300">
+              <i class="bi bi-people flex-shrink-0"></i>
+              <div>
+                <h4>Personalized Support</h4>
+                <p>We’re local, friendly, and dedicated to providing a personal touch.</p>
+              </div>
+            </div><!-- End Features Item-->
+    
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-right" data-aos-delay="400">
+              <i class="bi bi-house-door flex-shrink-0"></i>
+              <div>
+                <h4>Unmatched Convenience</h4>
+                <p>Schedule meetings at your home or business premises for maximum ease.</p>
+              </div>
+            </div><!-- End Features Item-->
+    
+            <div class="features-item d-flex mt-5 ps-0 ps-lg-3" data-aos="fade-right" data-aos-delay="500">
+              <i class="bi bi-journal-bookmark flex-shrink-0"></i>
+              <div>
+                <h4>Expert Guidance</h4>
+                <p>Benefit from our in-depth knowledge of the latest tax regulations and financial practices to ensure compliance and optimize your finances.</p>
+              </div>
+            </div><!-- End Features Item-->
+    
+          </div>
+        </div>
+    
+      </div>
+    
+    </section><!-- /Features Section -->
+    
+    
+
+   <!-- Services Section -->
+<section id="services" class="services section">
+
+  <!-- Section Title
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Services</h2>
+    <p>What We Bring to the Table</p>
+  </div><!-- End Section Title -->
+
+  <!-- <div class="container">
+
+    <div class="row gy-4">
+
+      <!-- Business Accounts and Taxation -->
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-calculator"></i>
+          </div>
+          <h3>Business Accounts and Taxation</h3>
+          <p>Streamline your business finances with expert handling of accounts and up-to-date tax compliance to help you focus on growth.</p>
+        </div>
+      </div><!-- End Service Item -->
+
+      <!-- Self Assessment -->
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="200">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-person-lines-fill"></i>
+          </div>
+          <h3>Self Assessment</h3>
+          <p>Receive professional assistance to complete and file your self-assessment returns accurately and on time.</p>
+        </div> -->
+      </div><!-- End Service Item -->
+
+      <!-- Bookkeeping -->
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="300">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-journal-check"></i>
+          </div>
+          <h3>Book keeping</h3>
+          <p>Maintain accurate financial records with our reliable bookkeeping services, tailored to your business needs.</p>
+        </div> -->
+      </div><!-- End Service Item -->
+
+      <!-- VAT and Payroll -->
+      <!-- <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="400">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-receipt"></i>
+          </div>
+          <h3>VAT and Payroll</h3>
+          <p>Ensure compliance with VAT regulations and manage your payroll efficiently with our expert services.</p>
+        </div> -->
+      </div><!-- End Service Item -->
+
+      <!-- Fixed Fees
+      <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="500">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-cash-stack"></i>
+          </div>
+          <h3>Fixed Fees</h3>
+          <p>Benefit from transparent pricing with no hidden costs, ensuring you know exactly what you’re paying for.</p>
+        </div> -->
+      </div><!-- End Service Item -->
+
+      <!-- Local Friendly Service
+      <div class="col-lg-4 col-md-6" data-aos="fade-right" data-aos-delay="600">
+        <div class="service-item position-relative">
+          <div class="icon">
+            <i class="bi bi-geo-alt"></i>
+          </div>
+          <h3>Local Friendly Service</h3>
+          <p>Experience our personalized, friendly service tailored to your business needs, delivered right where you are.</p>
+        </div>
+      </div><!-- End Service Item -->
+
+    <!-- </div>
+
+  </div>
+
+</section><!-- End Services Section -->
+<!-- 
+<section id="services" class="services section"> --> -->
+
+  <!-- Reviews Section --> -->
+<!-- <section id="reviews" class="reviews section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Reviews</h2>
+    <p>OUR SATISFIED CLIENTS</p>
+  </div>
+<!-- Stats Section -->
+<!-- <section id="stats" class="stats section">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4 align-items-center justify-content-between">
+      <!-- Image Section -->
+      <!-- <div class="col-lg-5" data-aos="fade-right" data-aos-duration="800">
+        <img src="assets/img/reviews.jpg" alt="Stats Image" class="img-fluid"> --> -->
+      <!-- </div> --> --> --> --> -->
