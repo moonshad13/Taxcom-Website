@@ -302,6 +302,61 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   // Clear the form
   document.getElementById('reviewForm').reset();
 });
+//PHP mail receiver
+document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const loading = document.querySelector('.loading');
+  const feedbackIcon = document.querySelector('.feedback-icon');
+  const successMessage = document.querySelector('.success-message');
+  const errorMessage = document.querySelector('.error-message');
+
+  // Display the loading spinner
+  loading.style.display = 'block';
+  feedbackIcon.style.display = 'none';
+  successMessage.style.display = 'none';
+  errorMessage.style.display = 'none';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+    });
+
+    const result = await response.text();
+
+    // Hide the loading spinner once the response is received
+    loading.style.display = 'none';
+
+    if (response.ok) {
+      // Show green circular tick animation
+      feedbackIcon.innerHTML = `
+        <div class="success-animation">
+          <div class="circle"></div>
+          <div class="checkmark">&#10003;</div>
+        </div>`;
+      feedbackIcon.style.display = 'block';
+      successMessage.style.display = 'block';
+      form.reset();
+    } else {
+      // Show error message
+      errorMessage.textContent = result;
+      errorMessage.style.display = 'block';
+    }
+  } catch (error) {
+    // Hide loading spinner on error
+    loading.style.display = 'none';
+    errorMessage.textContent = 'An error occurred. Please try again.';
+    errorMessage.style.display = 'block';
+  }
+});
+
+
+
+
+
 
 
 

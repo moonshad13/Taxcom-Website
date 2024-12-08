@@ -519,34 +519,41 @@ Our dedicated team works closely with you to understand your unique requirements
           <div class="col-lg-8">
             <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
-
+          
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+          
+                <div class="col-md-6">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                 </div>
-
+          
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                 </div>
-
+          
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 </div>
-
+          
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
+                  <div class="loading" style="display: none;">Loading...</div>
+                  <div class="feedback-icon" style="display: none;"></div>
+                  <div class="success-message" style="display: none; color: #28a745; margin-top: 10px; font-weight: bold;">
+                    Message sent successfully!
+                  </div>
+                  <div class="error-message" style="display: none; color: red;"></div>
+          
                   <button type="submit">Send Message</button>
                 </div>
-
+          
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div>
+          
+          
+          <!-- End Contact Form -->
+          
           
 
         </div>
@@ -613,6 +620,7 @@ Our dedicated team works closely with you to understand your unique requirements
 
   
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -624,41 +632,7 @@ Our dedicated team works closely with you to understand your unique requirements
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-  <script>
-    document.querySelector('.php-email-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-  
-      const form = e.target;
-      const formData = new FormData(form);
-      const loading = document.querySelector('.loading');
-      const errorMessage = document.querySelector('.error-message');
-      const sentMessage = document.querySelector('.sent-message');
-  
-      loading.style.display = 'block';
-      errorMessage.textContent = '';
-      sentMessage.textContent = '';
-  
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData
-        });
-  
-        const result = await response.text();
-        loading.style.display = 'none';
-  
-        if (response.ok) {
-          sentMessage.textContent = result;
-          form.reset();
-        } else {
-          errorMessage.textContent = result;
-        }
-      } catch (error) {
-        loading.style.display = 'none';
-        errorMessage.textContent = 'An error occurred. Please try again.';
-      }
-    });
-  </script>
+
   
   
   <script>
