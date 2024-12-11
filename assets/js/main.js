@@ -322,7 +322,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   };
 
   // Replace with your backend endpoint
-  fetch('https://taxcom-website.onrender.com', {
+  fetch('https://taxcom-website.onrender.com/send-email', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
