@@ -517,33 +517,35 @@ Our dedicated team works closely with you to understand your unique requirements
           </div>
 
           <div class="col-lg-8">
-            <form action="#" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form id="contact-form" class="php-email-form">
               <div class="row gy-4">
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
             
                 <div class="col-md-6">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
                 </div>
             
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" required>
                 </div>
             
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <textarea id="message" name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
                 </div>
             
                 <div class="col-md-12 text-center">
-                  <div class="loading" style="display: none;">Loading</div>
-                  <div class="error-message" style="display: none;"></div>
-                  <div class="sent-message" style="display: none;">Your message has been sent successfully. Thank you!</div>
+                  <div class="loading" style="display: none;">Loading...</div>
+                  <div class="error-message" style="display: none; color: red;"></div>
+                  <div class="sent-message" style="display: none; color: green;">Your message has been sent. Thank you!</div>
             
                   <button type="submit">Send Message</button>
                 </div>
               </div>
             </form>
+            
+            
             
           </div>
           
@@ -650,6 +652,14 @@ Our dedicated team works closely with you to understand your unique requirements
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("AF1Bs4L6-nCcguywXGq2N"); // Replace with your actual EmailJS Public API Key
+  })();
+</script>
+<script src="path/to/your/main.js"></script>
+
 
 </body>
 

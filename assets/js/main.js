@@ -386,11 +386,9 @@ document.querySelector('.php-email-form').addEventListener('submit', async funct
     alert('An error occurred. Please try again.');
   }
 });
-document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
+document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const form = e.target;
-  const formData = new FormData(form);
   const loading = document.querySelector('.loading');
   const errorMessage = document.querySelector('.error-message');
   const sentMessage = document.querySelector('.sent-message');
@@ -399,25 +397,27 @@ document.querySelector('.php-email-form').addEventListener('submit', async funct
   errorMessage.style.display = 'none';
   sentMessage.style.display = 'none';
 
-  try {
-    const response = await fetch('/.netlify/functions/send_email', {
-      method: 'POST',
-      body: formData,
-    });
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value,
+  };
 
-    if (response.ok) {
+  emailjs.send("service_q7vkj5f", "template_8zefji1", formData)
+    .then(function(response) {
       loading.style.display = 'none';
       sentMessage.style.display = 'block';
-      form.reset();
-    } else {
-      throw new Error('Failed to send message');
-    }
-  } catch (error) {
-    loading.style.display = 'none';
-    errorMessage.textContent = 'An error occurred. Please try again.';
-    errorMessage.style.display = 'block';
-  }
+      console.log('SUCCESS!', response.status, response.text);
+      document.getElementById('contact-form').reset();
+    }, function(error) {
+      loading.style.display = 'none';
+      errorMessage.textContent = 'An error occurred. Please try again.';
+      errorMessage.style.display = 'block';
+      console.error('FAILED...', error);
+    });
 });
+
 
 
 
