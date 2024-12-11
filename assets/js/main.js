@@ -303,17 +303,19 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   document.getElementById('reviewForm').reset();
 });
 document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault(); // Prevent form submission to server
+  e.preventDefault(); // Prevent page reload
 
   // Elements for feedback
   const loading = document.querySelector('.loading');
   const errorMessage = document.querySelector('.error-message');
   const sentMessage = document.querySelector('.sent-message');
 
+  // Reset feedback states
   loading.style.display = 'block';
   errorMessage.style.display = 'none';
   sentMessage.style.display = 'none';
 
+  // Form data
   const formData = {
     name: document.getElementById('name').value,
     email: document.getElementById('email').value,
@@ -321,7 +323,7 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
     message: document.getElementById('message').value,
   };
 
-  // Replace with your backend endpoint
+  // Send POST request
   fetch('https://taxcom-website.onrender.com/send-email', {
     method: 'POST',
     headers: {
@@ -331,19 +333,26 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        return response.json().then((errorData) => {
+          throw new Error(errorData.message || 'Failed to send email');
+        });
       }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Email sent successfully:', data);
       loading.style.display = 'none';
       sentMessage.style.display = 'block';
       document.getElementById('contact-form').reset();
     })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error sending email:', error);
       loading.style.display = 'none';
-      errorMessage.textContent = 'Error sending email. Please try again later.';
+      errorMessage.textContent = error.message || 'Error sending email. Please try again later.';
       errorMessage.style.display = 'block';
     });
 });
+
 
 
 
