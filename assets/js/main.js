@@ -302,9 +302,6 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   // Clear the form
   document.getElementById('reviewForm').reset();
 });
-// Initialize EmailJS with your Public API Key
-emailjs.init("I-dRIOgvT6yX57NH0"); // Replace with your actual EmailJS Public API Key
-
 document.getElementById('contact-form').addEventListener('submit', function (e) {
   e.preventDefault(); // Prevent form submission to server
 
@@ -318,28 +315,36 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   sentMessage.style.display = 'none';
 
   const formData = {
-    from_name: document.getElementById('name').value,
-    from_email: document.getElementById('email').value,
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
     subject: document.getElementById('subject').value,
     message: document.getElementById('message').value,
   };
 
-  // Send email using EmailJS
-  emailjs.send("service_q7vkj5f", "template_8zefji1", formData, "I-dRIOgvT6yX57NH0")
-    .then(function (response) {
+  // Replace with your backend endpoint
+  fetch('http://localhost:3000/send-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       loading.style.display = 'none';
       sentMessage.style.display = 'block';
-      console.log('SUCCESS!', response.status, response.text);
       document.getElementById('contact-form').reset();
     })
-    .catch(function (error) {
+    .catch((error) => {
+      console.error('Error:', error);
       loading.style.display = 'none';
-      errorMessage.textContent = `Error: ${error.text || error.message}`;
+      errorMessage.textContent = 'Error sending email. Please try again later.';
       errorMessage.style.display = 'block';
-      console.error('FAILED...', error);
-      alert(`Error: ${error.text || error.message}`);
     });
 });
+
 
 
 
