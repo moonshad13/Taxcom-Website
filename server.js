@@ -41,3 +41,8 @@ app.post('/send-email', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+const cors = require('cors');
+app.use(cors({
+  origin: '*', // Replace '*' with your frontend's domain for better security
+}));
+
