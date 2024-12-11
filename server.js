@@ -13,12 +13,10 @@ app.use(bodyParser.json());
 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
-  host: 'smtp-mail.outlook.com',
-  port: 587,
-  secure: false, // true for 465, false for other ports
+  service: 'Outlook',
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: process.env.SMTP_USER, // Your Outlook email
+    pass: process.env.SMTP_PASS, // Your app-specific password
   },
 });
 
