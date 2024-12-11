@@ -302,93 +302,13 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   // Clear the form
   document.getElementById('reviewForm').reset();
 });
-//PHP mail receiver
-document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
-  e.preventDefault();
+// Initialize EmailJS with your Public API Key
+emailjs.init("I-dRIOgvT6yX57NH0"); // Replace with your actual EmailJS Public API Key
 
-  const form = e.target;
-  const formData = new FormData(form);
-  const loading = document.querySelector('.loading');
-  const feedbackIcon = document.querySelector('.feedback-icon');
-  const successMessage = document.querySelector('.success-message');
-  const errorMessage = document.querySelector('.error-message');
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent form submission to server
 
-  // Display the loading spinner
-  loading.style.display = 'block';
-  feedbackIcon.style.display = 'none';
-  successMessage.style.display = 'none';
-  errorMessage.style.display = 'none';
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await response.text();
-
-    // Hide the loading spinner once the response is received
-    loading.style.display = 'none';
-
-    if (response.ok) {
-      // Show green circular tick animation
-      feedbackIcon.innerHTML = `
-        <div class="success-animation">
-          <div class="circle"></div>
-          <div class="checkmark">&#10003;</div>
-        </div>`;
-      feedbackIcon.style.display = 'block';
-      successMessage.style.display = 'block';
-      form.reset();
-    } else {
-      // Show error message
-      errorMessage.textContent = result;
-      errorMessage.style.display = 'block';
-    }
-  } catch (error) {
-    // Hide loading spinner on error
-    loading.style.display = 'none';
-    errorMessage.textContent = 'An error occurred. Please try again.';
-    errorMessage.style.display = 'block';
-  }
-});
-document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const formData = new FormData(form);
-
-  const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    subject: formData.get('subject'),
-    message: formData.get('message'),
-  };
-
-  try {
-    const response = await fetch('/.netlify/functions/send_email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.text();
-
-    if (response.ok) {
-      alert(result);
-      form.reset();
-    } else {
-      alert('Error: ' + result);
-    }
-  } catch (error) {
-    alert('An error occurred. Please try again.');
-  }
-});
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-
+  // Elements for feedback
   const loading = document.querySelector('.loading');
   const errorMessage = document.querySelector('.error-message');
   const sentMessage = document.querySelector('.sent-message');
@@ -398,25 +318,32 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   sentMessage.style.display = 'none';
 
   const formData = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
+    from_name: document.getElementById('name').value,
+    from_email: document.getElementById('email').value,
     subject: document.getElementById('subject').value,
     message: document.getElementById('message').value,
   };
 
-  emailjs.send("service_q7vkj5f", "template_8zefji1", formData)
-    .then(function(response) {
+  // Send email using EmailJS
+  emailjs.send("service_q7vkj5f", "template_8zefji1", formData, "I-dRIOgvT6yX57NH0")
+    .then(function (response) {
       loading.style.display = 'none';
       sentMessage.style.display = 'block';
       console.log('SUCCESS!', response.status, response.text);
       document.getElementById('contact-form').reset();
-    }, function(error) {
+    })
+    .catch(function (error) {
       loading.style.display = 'none';
-      errorMessage.textContent = 'An error occurred. Please try again.';
+      errorMessage.textContent = `Error: ${error.text || error.message}`;
       errorMessage.style.display = 'block';
       console.error('FAILED...', error);
+      alert(`Error: ${error.text || error.message}`);
     });
 });
+
+
+
+
 
 
 
