@@ -1,4 +1,4 @@
-<?php
+<//?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -13,32 +13,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email   = htmlspecialchars($_POST['email']);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
-    $to      = 'taxcomp@outlook.com';  // Change to your main email address
+    $to      = 'taxcom695@gmail.com';  // Your Gmail address to receive messages
 
     // Create a new PHPMailer instance
     $mail = new PHPMailer\PHPMailer\PHPMailer();
 
-    // SMTP configuration for Outlook
+    // SMTP configuration for Gmail
     $mail->isSMTP();
-    $mail->Host       = 'smtp.office365.com';  // Outlook SMTP server
+    $mail->Host       = 'smtp.gmail.com';      // Gmail SMTP server
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'taxcomp@outlook.com';  // Your Outlook email address
-    $mail->Password   = 'taxisfun786';    // Your Outlook app password or email password
+    $mail->Username   = 'taxcom695@gmail.com'; // Your Gmail address
+    $mail->Password   = 'taxisfun786';         // Your Gmail password (consider setting up an App Password for better security)
     $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
 
-    // Set the sender's email (user's email) and name (user's name)
-    $mail->setFrom($email, $name);   // The sender's email and name
-    $mail->addAddress('taxcomp@outlook.com');           // The recipient email address
+    // Email settings
+    $mail->setFrom($email, $name);             // The sender's email and name
+    $mail->addAddress('taxcom695@gmail.com');  // The recipient email address
     $mail->Subject = $subject;
     $mail->Body    = "You have received a new message from your website contact form:\n\n";
     $mail->Body   .= "Name: $name\n";
     $mail->Body   .= "Email: $email\n";
     $mail->Body   .= "Subject: $subject\n\n";
     $mail->Body   .= "Message:\n$message\n";
-
-    // Enable debugging to display SMTP errors
-    $mail->SMTPDebug = 2;  // Enable debugging (set to 0 to disable debug messages)
 
     // Attempt to send the email
     if ($mail->send()) {
@@ -51,6 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo "Invalid request method.";
 }
 ?>
+
+
 
 
 

@@ -352,6 +352,74 @@ document.querySelector('.php-email-form').addEventListener('submit', async funct
     errorMessage.style.display = 'block';
   }
 });
+document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    subject: formData.get('subject'),
+    message: formData.get('message'),
+  };
+
+  try {
+    const response = await fetch('/.netlify/functions/send_email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.text();
+
+    if (response.ok) {
+      alert(result);
+      form.reset();
+    } else {
+      alert('Error: ' + result);
+    }
+  } catch (error) {
+    alert('An error occurred. Please try again.');
+  }
+});
+document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const loading = document.querySelector('.loading');
+  const errorMessage = document.querySelector('.error-message');
+  const sentMessage = document.querySelector('.sent-message');
+
+  loading.style.display = 'block';
+  errorMessage.style.display = 'none';
+  sentMessage.style.display = 'none';
+
+  try {
+    const response = await fetch('/.netlify/functions/send_email', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      loading.style.display = 'none';
+      sentMessage.style.display = 'block';
+      form.reset();
+    } else {
+      throw new Error('Failed to send message');
+    }
+  } catch (error) {
+    loading.style.display = 'none';
+    errorMessage.textContent = 'An error occurred. Please try again.';
+    errorMessage.style.display = 'block';
+  }
+});
+
+
 
 
 
