@@ -522,9 +522,41 @@ Our dedicated team works closely with you to understand your unique requirements
 
     </div><!-- End Row -->
 
-  </div>
+    <!-- New Section Title for the Form -->
+    <div class="container section-title" data-aos="fade-up" style="margin-top: 60px;">
+      <p style="font-size: 20px; color: #444444; font-weight: 500;">Send Us a Message</p>
+    </div><!-- End New Section Title -->
+
+    <!-- Contact Form -->
+    <div class="container" data-aos="fade-up" data-aos-delay="600">
+      <form id="contact-form" action="send_email.php" method="POST" class="php-email-form">
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6">
+            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="col-md-12">
+            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+          </div>
+          <div class="col-md-12">
+            <textarea name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
+          </div>
+          <div class="col-md-12 text-center">
+            <div class="loading" style="display: none;">Loading...</div>
+            <div class="error-message" style="display: none; color: rgb(248, 188, 188);">Message was not delivered.</div>
+            <div class="sent-message" style="display: none; color: rgb(209, 255, 209);">Your message has been sent. Thank you!</div>
+            <button type="submit">Send Message</button>
+          </div>
+        </div>
+      </form>
+    </div><!-- End Contact Form -->
+
+  </div><!-- End Container -->
 
 </section><!-- /Contact Section -->
+
 
 
 
@@ -620,13 +652,102 @@ Our dedicated team works closely with you to understand your unique requirements
   </script>
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  emailjs.init("VXszx1yniI3L62_YA"); // Replace with your EmailJS Public Key
-</script>
+
 
   <!-- Main JS File -->
   
   <script src="assets/js/main.js"></script>
+  <style>
+    .php-email-form .form-control {
+      border: 2px solid #ccc;          /* Bolder border with a noticeable color */
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;   /* Smooth transition effect */
+    }
+  
+    .php-email-form .form-control:focus {
+      border-color: #007bff;           /* Highlight color when the field is focused */
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Subtle glow effect */
+    }
+  
+    .php-email-form button[type="submit"] {
+      margin-top: 20px;                /* Added spacing above the button */
+    }
+    .php-email-form .form-control {
+    border: 2px solid #ccc;          /* Bolder border with a noticeable color */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000;                     /* Make the text inside the fields black */
+    transition: border-color 0.3s;   /* Smooth transition effect */
+  }
+
+  .php-email-form .form-control::placeholder {
+    color: #000;                     /* Placeholder text color set to black */
+    opacity: 1;                      /* Ensure full opacity for better visibility */
+  }
+
+  .php-email-form .form-control:focus {
+    border-color: #007bff;           /* Highlight color when the field is focused */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Subtle glow effect */
+  }
+
+  .php-email-form button[type="submit"] {
+    margin-top: 20px;                /* Added spacing above the button */
+  }
+  </style>
+  <script>
+    // JavaScript to handle form submission
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    let formData = new FormData(this);
+    
+    // Show loading message and hide previous status
+    document.querySelector(".loading").style.display = "block";
+    document.querySelector(".error-message").style.display = "none";
+    document.querySelector(".sent-message").style.display = "none";
+    
+    // Use AJAX to send the form data to send_email.php
+    fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Hide loading message
+        document.querySelector(".loading").style.display = "none";
+        
+        if (data.includes("Message sent successfully")) {
+            // Show success message in green box
+            document.querySelector(".sent-message").style.display = "block";
+            document.querySelector(".sent-message").textContent = "Your message has been sent successfully!";
+            document.querySelector(".sent-message").style.backgroundColor = "#28a745"; // Green color
+            document.querySelector(".sent-message").style.color = "#fff"; // White text
+        } else {
+            // Show error message in red box
+            document.querySelector(".error-message").style.display = "block";
+            document.querySelector(".error-message").textContent = "Message delivery failed. Please try again.";
+            document.querySelector(".error-message").style.backgroundColor = "#dc3545"; // Red color
+            document.querySelector(".error-message").style.color = "#fff"; // White text
+        }
+    })
+    .catch(error => {
+        // Show error message if the request fails
+        document.querySelector(".loading").style.display = "none";
+        document.querySelector(".error-message").style.display = "block";
+        document.querySelector(".error-message").textContent = "There was an error sending your message. Please try again.";
+        document.querySelector(".error-message").style.backgroundColor = "#dc3545"; // Red color
+        document.querySelector(".error-message").style.color = "#fff"; // White text
+    });
+});
+
+    </script>
+    
+  
   
 
   
