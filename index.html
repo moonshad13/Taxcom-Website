@@ -516,7 +516,7 @@ Our dedicated team works closely with you to understand your unique requirements
 
           </div>
           <div class="col-lg-8">
-            <form id="contact-form">
+            <!--form id="contact-form" action="http://localhost/Taxcom-Website/forms/contact.php" method="POST">
               <div class="row gy-4">
                 <div class="col-md-6">
                   <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
@@ -537,7 +537,10 @@ Our dedicated team works closely with you to understand your unique requirements
                   <button type="submit">Send Message</button>
                 </div>
               </div>
-            </form>
+            </form-->
+            
+            
+            
           
           
           
@@ -650,6 +653,11 @@ Our dedicated team works closely with you to understand your unique requirements
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
   </script>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("VXszx1yniI3L62_YA"); // Replace with your EmailJS Public Key
+</script>
 
   <!-- Main JS File -->
   

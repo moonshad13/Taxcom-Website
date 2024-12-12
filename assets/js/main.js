@@ -302,56 +302,10 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
   // Clear the form
   document.getElementById('reviewForm').reset();
 });
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault(); // Prevent page reload
+d
 
-  // Elements for feedback
-  const loading = document.querySelector('.loading');
-  const errorMessage = document.querySelector('.error-message');
-  const sentMessage = document.querySelector('.sent-message');
 
-  // Reset feedback states
-  loading.style.display = 'block';
-  errorMessage.style.display = 'none';
-  sentMessage.style.display = 'none';
 
-  // Form data
-  const formData = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    subject: document.getElementById('subject').value,
-    message: document.getElementById('message').value,
-  };
-
-  // Send POST request
-  fetch('https://taxcom-website.onrender.com/send-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        return response.json().then((errorData) => {
-          throw new Error(errorData.message || 'Failed to send email');
-        });
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log('Email sent successfully:', data);
-      loading.style.display = 'none';
-      sentMessage.style.display = 'block';
-      document.getElementById('contact-form').reset();
-    })
-    .catch((error) => {
-      console.error('Error sending email:', error);
-      loading.style.display = 'none';
-      errorMessage.textContent = error.message || 'Error sending email. Please try again later.';
-      errorMessage.style.display = 'block';
-    });
-});
 
 
 
