@@ -19,28 +19,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'taxcom695@gmail.com'; // Your Gmail address
-        $mail->Password = 'vyzz bhsc bgpo gdns'; // Your Gmail password or App Password
+        $mail->Username = 'taxcom695@gmail.com';
+        $mail->Password = 'vyzz bhsc bgpo gdns';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Email Details
         $mail->setFrom($email, $name);
-        $mail->addAddress('taxcom695@gmail.com'); // Recipient address
+        $mail->addAddress('taxcom695@gmail.com');
 
         $mail->Subject = $subject;
         $mail->Body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
 
-        // Send the email
-        if ($mail->send()) {
-            echo "Message sent successfully";  // Success response
-        }
+        $mail->send();
+        echo "success";
     } catch (Exception $e) {
-        // Error response in case of failure
-        echo "Message delivery failed. Error: {$mail->ErrorInfo}";
+        echo "error";
     }
 } else {
-    echo "Invalid request";  // If it's not a POST request
+    echo "Invalid request";
 }
 ?>
+
+
+
 

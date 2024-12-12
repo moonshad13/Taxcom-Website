@@ -529,7 +529,7 @@ Our dedicated team works closely with you to understand your unique requirements
 
     <!-- Contact Form -->
     <div class="container" data-aos="fade-up" data-aos-delay="600">
-      <form id="contact-form" action="send_email.php" method="POST" class="php-email-form">
+      <form id="contact-form" class="php-email-form">
         <div class="row gy-4">
           <div class="col-md-6">
             <input type="text" name="name" class="form-control" placeholder="Your Name" required>
@@ -551,6 +551,7 @@ Our dedicated team works closely with you to understand your unique requirements
           </div>
         </div>
       </form>
+      
     </div><!-- End Contact Form -->
 
   </div><!-- End Container -->
@@ -651,7 +652,7 @@ Our dedicated team works closely with you to understand your unique requirements
     const db = firebase.firestore();
   </script>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 
 
   <!-- Main JS File -->
@@ -700,17 +701,18 @@ Our dedicated team works closely with you to understand your unique requirements
   }
   </style>
   <script>
-    // JavaScript to handle form submission
+// JavaScript to handle form submission
 document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent default form submission
+    event.stopImmediatePropagation(); // Stop any additional event listeners from firing
 
     let formData = new FormData(this);
-    
+
     // Show loading message and hide previous status
     document.querySelector(".loading").style.display = "block";
     document.querySelector(".error-message").style.display = "none";
     document.querySelector(".sent-message").style.display = "none";
-    
+
     // Use AJAX to send the form data to send_email.php
     fetch('send_email.php', {
         method: 'POST',
@@ -720,32 +722,26 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     .then(data => {
         // Hide loading message
         document.querySelector(".loading").style.display = "none";
-        
-        if (data.includes("Message sent successfully")) {
-            // Show success message in green box
+
+        if (data.trim() === "success") {
+            // Show success message
             document.querySelector(".sent-message").style.display = "block";
             document.querySelector(".sent-message").textContent = "Your message has been sent successfully!";
-            document.querySelector(".sent-message").style.backgroundColor = "#28a745"; // Green color
-            document.querySelector(".sent-message").style.color = "#fff"; // White text
         } else {
-            // Show error message in red box
+            // Show error message
             document.querySelector(".error-message").style.display = "block";
             document.querySelector(".error-message").textContent = "Message delivery failed. Please try again.";
-            document.querySelector(".error-message").style.backgroundColor = "#dc3545"; // Red color
-            document.querySelector(".error-message").style.color = "#fff"; // White text
         }
     })
     .catch(error => {
-        // Show error message if the request fails
+        // Hide loading message and show error message on network failure
         document.querySelector(".loading").style.display = "none";
         document.querySelector(".error-message").style.display = "block";
         document.querySelector(".error-message").textContent = "There was an error sending your message. Please try again.";
-        document.querySelector(".error-message").style.backgroundColor = "#dc3545"; // Red color
-        document.querySelector(".error-message").style.color = "#fff"; // White text
     });
 });
 
-    </script>
+  </script>
     
   
   
